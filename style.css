@@ -1,5 +1,7 @@
 img{
   width: 100%;
+  border-top: 5px solid black;
+  padding-top: 40px;
 }
 .fetchedCards{
   display: flex;
