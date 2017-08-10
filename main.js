@@ -13,7 +13,13 @@ submit.addEventListener('click', function(){
 let printWish = document.querySelector('.listPrint');
 printWish.addEventListener('click', function(){
   wishlist.forEach(function(e){
-    console.log(e.name);
+    let thelist = document.querySelector('.wishList');
+    let listItem = document.createElement('li');
+    listItem.innerHTML = e.name;
+    console.log(listItem)
+    console.log(thelist)
+    thelist.appendChild(listItem);
+
   })
 })
 
@@ -35,7 +41,7 @@ fetch("https://api.scryfall.com/cards/named?fuzzy=" + card + "&format=json")
     document.querySelector('.container').appendChild(newCard);
     let cardinfo = `
     <img src=${data.image_uri}>
-    <p>Dollars: ${data.usd}| Tix: ${data.tix}</p>`
+    <p>Dollars: ${data.usd} | Tix: ${data.tix}</p>`
     newCard.innerHTML= cardinfo;
     let saveButton = document.createElement('button');
     newCard.appendChild(saveButton);
