@@ -1,0 +1,7 @@
+img{
+  width: 300px;
+}
+.fetchedCards{
+  display: flex;
+  align-items: center;
+}
