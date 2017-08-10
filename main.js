@@ -1,6 +1,6 @@
 
 
-
+let wishlist = [];
 let submit = document.querySelector('.submitbutton');
 submit.addEventListener('click', function(){
   document.querySelector('.container').innerHTML = '';
@@ -8,6 +8,13 @@ submit.addEventListener('click', function(){
   console.log(input.value);
   searching(input.value);
   input.value = '';
+})
+
+let printWish = document.querySelector('.listPrint');
+printWish.addEventListener('click', function(){
+  wishlist.forEach(function(e){
+    console.log(e.name);
+  })
 })
 
 function searching(input){
@@ -25,14 +32,20 @@ fetch("https://api.scryfall.com/cards/named?fuzzy=" + card + "&format=json")
     console.log(data);
     let newCard = document.createElement('div');
     newCard.className="fetchedCards";
-    // let cardimage = document.createElement('img');
-    // cardimage.setAttribute('src',data.image_uri);
-    // newCard.appendChild(cardimage);
     document.querySelector('.container').appendChild(newCard);
     let cardinfo = `
     <img src=${data.image_uri}>
     <p>Dollars: ${data.usd}| Tix: ${data.tix}</p>`
     newCard.innerHTML= cardinfo;
+    let saveButton = document.createElement('button');
+    newCard.appendChild(saveButton);
+    saveButton.innerHTML = "Save Me For Later!";
+    saveButton.className="saveButton";
+    saveButton.addEventListener('click', function(){
+      wishlist.push(data);
+      saveButton.innerHTML = "You Saved This Card!";
+      console.log(wishlist);
+    });
 
   });
 }
