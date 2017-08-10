@@ -1,5 +1,5 @@
 img{
-  width: 300px;
+  width: 100%;
 }
 .fetchedCards{
   display: flex;
@@ -10,10 +10,6 @@ img{
 .be-the-same {
   width: auto;
 }
-
-/*img{
-  padding: 40px auto;
-}*/
 
 body{
   font-family: 'Montserrat', sans-serif;
@@ -36,9 +32,13 @@ h1{
   text-align: center;
 }*/
 
-.searchword{
-  height: 40px;
-  width: 60%;
+.searchword {
+
+  width: 80%;
+  border: 1px solid black;
+}
+.budgetnum{
+  width: 80%;
   border: 1px solid black;
 }
 
@@ -53,5 +53,6 @@ button{
   font-size: 1em;
 }
 input{
-  height: 100px;
+  padding: 20px 10px;
+  font-size: 2em;
 }
