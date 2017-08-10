@@ -1,7 +1,58 @@
 img{
-  width: 300px;
+  width: 100%;
 }
 .fetchedCards{
   display: flex;
+  flex-direction: column;
   align-items: center;
+}
+
+.be-the-same {
+  width: auto;
+}
+
+body{
+  font-family: 'Montserrat', sans-serif;
+  color: purple;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: 4em;
+}
+
+h1{
+  text-align: center;
+  color: #73B1DB;
+}
+
+/*.underBudgetList{
+  height: 40px;
+  width: 60%;
+  text-align: center;
+}*/
+
+.searchword {
+
+  width: 80%;
+  border: 1px solid black;
+}
+.budgetnum{
+  width: 80%;
+  border: 1px solid black;
+}
+
+button{
+  background-color: #8993B8;
+  color: white;
+  border-radius: 10px;
+  outline: none;
+  height: 200px;
+  width: 80%;
+  margin: 20px auto;
+  font-size: 1em;
+}
+input{
+  padding: 20px 10px;
+  font-size: 2em;
 }

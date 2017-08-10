@@ -12,8 +12,11 @@ submit.addEventListener('click', function(){
 
 let printWish = document.querySelector('.listPrint');
 printWish.addEventListener('click', function(){
+  let thelist = document.querySelector('.wishList');
+  thelist.innerHTML = '';
+  let wishListTitle = document.querySelector('.wishListTitle');
+  wishListTitle.innerHTML = `<h1>Wish List</h1>`
   wishlist.forEach(function(e){
-    let thelist = document.querySelector('.wishList');
     let listItem = document.createElement('li');
     listItem.innerHTML = e.name;
     console.log(listItem)
@@ -22,6 +25,12 @@ printWish.addEventListener('click', function(){
 
   })
 })
+let checkbudget = document.querySelector(".checkbudget");
+checkbudget.addEventListener('click', function(){
+  let input = document.querySelector('.budgetnum');
+  console.log(input.value);
+  checkingbudget(input.value,wishlist);
+})
 
 function searching(input){
   let card = fuzzify(input);
@@ -29,6 +38,10 @@ fetch("https://api.scryfall.com/cards/named?fuzzy=" + card + "&format=json")
   .then(
     function(response){
     if(response.status !== 200){
+      if(response.status === 404){
+        let thebody = document.querySelector(".container");
+        thebody.innerHTML = `<p>Either not a card or too many cards. Try again, and please, be a little more specific.</p>`
+      }
       console.log(response.status);
       return;
     }
@@ -60,4 +73,19 @@ function fuzzify(input){
   return betterinput;
 
 }
-//13, 18, 12, 12, 13, 7
+function checkingbudget(budget,wishlist){
+  let underBudgetList = document.querySelector('.underBudgetList');
+  underBudgetList.innerHTML = '';
+  let underbudget = [];
+  let underBudgetTitle = document.querySelector('.underBudgetTitle');
+  underBudgetTitle.innerHTML = `<h1>Under Budget List</h1>`
+  wishlist.forEach(function(e){
+    if(parseFloat(e.usd) <= budget){
+      underbudget.push(e);
+      let listItem = document.createElement('li');
+      listItem.innerHTML = e.name;
+      underBudgetList.appendChild(listItem);
+    }
+  })
+
+}
