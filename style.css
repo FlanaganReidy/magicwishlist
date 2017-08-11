@@ -58,3 +58,9 @@ input{
   padding: 20px 10px;
   font-size: 2em;
 }
+li{
+  list-style: none;
+}
+.budgetnum{
+  text-align: right;
+}
