@@ -1,38 +1,43 @@
 let wishlist = [];
 let submit = document.querySelector('.submitbutton');
+// Search Button functionality
 submit.addEventListener('click', function() {
+  document.querySelector('.wishList').innerHTML = '';
+  document.querySelector('.wishListTitle').innerHTML = '';
   document.querySelector('.container').innerHTML = '';
   let input = document.querySelector('.searchword');
   console.log(input.value);
-  greaterSearch(input.value);
+  greaterSearch(input.value); //calls our better search
   input.value = '';
 })
 
-let printWish = document.querySelector('.listPrint');
-printWish.addEventListener('click', function() {
-  document.querySelector('.container').innerHTML = '';
-  let thelist = document.querySelector('.wishList');
-  thelist.innerHTML = '';
-  let wishListTitle = document.querySelector('.wishListTitle');
-  wishListTitle.innerHTML = `<h1>Wish List</h1>`
-  wishlist.forEach(function(e) {
+//print button functionality /selfcontained/
+let printWish = document.querySelector('.listPrint'); //assign variable to our print list button
+printWish.addEventListener('click', function() { //add event listener
+  document.querySelector('.container').innerHTML = ''; //make our search return container empty
+  let thelist = document.querySelector('.wishList'); //grab the wishlist ol
+  thelist.innerHTML = '';  //make wishlist ol empty
+  let wishListTitle = document.querySelector('.wishListTitle'); //grab the wishlist title div
+  wishListTitle.innerHTML = `<h1>Wish List</h1>` //populate the wishlist title div with an h1
+  wishlist.forEach(function(e) { //run through everything we've added to our wishlist array and make a new list item with picture/price
     let listItem = document.createElement('li');
     let cardinfo = `
           <hr>
           <img src=${e.image_uri}>
           <p>Dollars: ${e.usd} | Tix: ${e.tix}</p>`
     listItem.innerHTML = cardinfo;
-    console.log(listItem)
-    console.log(thelist)
+    // console.log(listItem)
+    // console.log(thelist)
     thelist.appendChild(listItem);
-
   })
 })
-let checkbudget = document.querySelector(".checkbudget");
-checkbudget.addEventListener('click', function() {
-  let input = document.querySelector('.budgetnum');
+
+//check budget button functionality /calls our checking budget function
+let checkbudget = document.querySelector(".checkbudget"); //assign variable to the button
+checkbudget.addEventListener('click', function() { //add event listener to the button
+  let input = document.querySelector('.budgetnum'); //assign a variable to the value of what's in the budget num input
   console.log(input.value);
-  checkingbudget(input.value, wishlist);
+  checkingbudget(input.value, wishlist); //run check budget function
 })
 
 // function searching(input) {
@@ -103,10 +108,10 @@ function greaterSearch(input) {
         return;
       }
       return response.json();
-    }).then(function(data) {
-      console.log(data);
-      data.data.forEach(function(e) {
-        fetch("https://api.scryfall.com/cards/named?fuzzy=" + fuzzify(e) + "&format=json")
+    }).then(function(catalog) {
+      console.log(catalog);
+      catalog.data.forEach(function(e) {
+        fetch("https://api.scryfall.com/cards/named?exact=" + fuzzify(e) + "&format=json")
           .then(function(response) {
             if (response.status !== 200) {
               console.log(response.status);
