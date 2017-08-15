@@ -7,7 +7,8 @@ submit.addEventListener('click', function() {
   document.querySelector('.container').innerHTML = '';
   let input = document.querySelector('.searchword');
   console.log(input.value);
-  greaterSearch(input.value); //calls our better search
+  greaterSearch(input.value);
+  // greaterSearch(input.value); //calls our better search
   input.value = '';
 })
 
@@ -36,7 +37,7 @@ printWish.addEventListener('click', function() { //add event listener
 let checkbudget = document.querySelector(".checkbudget"); //assign variable to the button
 checkbudget.addEventListener('click', function() { //add event listener to the button
   let input = document.querySelector('.budgetnum'); //assign a variable to the value of what's in the budget num input
-  console.log(input.value);
+  // console.log(input.value);
   checkingbudget(input.value, wishlist); //run check budget function
 })
 
@@ -104,22 +105,22 @@ function greaterSearch(input) {
   fetch("https://api.scryfall.com/cards/autocomplete?q=" + fuzzify(input))
     .then(function(response) {
       if (response.status !== 200) {
-        console.log(response.status);
+        // console.log(response.status);
         return;
       }
       return response.json();
     }).then(function(catalog) {
-      console.log(catalog);
+      // console.log(catalog);
       catalog.data.forEach(function(e) {
         fetch("https://api.scryfall.com/cards/named?exact=" + fuzzify(e) + "&format=json")
           .then(function(response) {
             if (response.status !== 200) {
-              console.log(response.status);
+              // console.log(response.status);
               return;
             }
             return response.json();
           }).then(function(data) {
-            console.log(data);
+            // console.log(data);
             let newCard = document.createElement('div');
             newCard.className = "fetchedCards";
             document.querySelector('.container').appendChild(newCard);
@@ -135,7 +136,7 @@ function greaterSearch(input) {
             saveButton.addEventListener('click', function() {
               wishlist.push(data);
               saveButton.innerHTML = "You Saved This Card!";
-              console.log(wishlist);
+              // console.log(wishlist);
             });
 
           })
