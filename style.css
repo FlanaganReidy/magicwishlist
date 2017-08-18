@@ -1,6 +1,6 @@
 img{
   width: 100%;
-  border-top: 5px solid black;
+  border-top: 5px solid #333333;
   padding-top: 40px;
 }
 .fetchedCards{
