@@ -120,7 +120,7 @@ function greaterSearch(input) {
             }
             return response.json();
           }).then(function(data) {
-            // console.log(data);
+            console.log(data);
             let newCard = document.createElement('div');
             newCard.className = "fetchedCards";
             document.querySelector('.container').appendChild(newCard);
