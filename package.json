@@ -1,0 +1,23 @@
+{
+  "name": "magic-wish-list",
+  "version": "1.0.0",
+  "description": "An app for searching cards on Scryfall and creating a wishlist for them",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FlanaganReidy/magicwishlist.git"
+  },
+  "author": "Shannon Reidy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FlanaganReidy/magicwishlist/issues"
+  },
+  "homepage": "https://github.com/FlanaganReidy/magicwishlist#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mustache": "^4.0.1"
+  }
+}
