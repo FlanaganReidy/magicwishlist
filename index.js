@@ -1,9 +1,12 @@
-const express = require('express')
-const app = express()
-const port = 3000
+require("dotenv").config();
+const express = require('express');
+const app = express();
+const port = 3000;
+const mongoose = require('mongoose');
+mongoose.connect(process.env.MONGO_CONNECTION_STRING, { useNewUrlParser: true }).catch(error => handleError(error))
+const Cards = require('./models/cards.js');
 
-
-app.use(express.static('public'))
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
   res.render('index');

@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/FlanaganReidy/magicwishlist#readme",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "mongoose": "^5.11.4",
     "mustache": "^4.0.1"
   }
 }
