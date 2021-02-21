@@ -101,7 +101,7 @@ function checkingbudget(budget, wishlist) {
 
 }
 
-function greaterSearch(input) {
+/*function greaterSearch(input) {
   fetch("https://api.scryfall.com/cards/autocomplete?q=" + fuzzify(input))
     .then(function(response) {
       if (response.status !== 200) {
@@ -142,4 +142,4 @@ function greaterSearch(input) {
           })
       })
     })
-}
+} */
