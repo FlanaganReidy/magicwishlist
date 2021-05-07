@@ -19,14 +19,8 @@ function fuzzify(input) {
 }
 
 async function greaterSearch(input) {
-  try{
   let response = await fetch("https://api.scryfall.com/cards/search?q=" + fuzzify(input), {type:"GET"})
   let data = await response.json();
-  }
-  catch(error){
-    console.error(error);
-  }
-  console.log(data.data);
 
   data.data.forEach( (data)=> {
 

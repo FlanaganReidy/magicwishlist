@@ -16,3 +16,7 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log(`Hello,it's me the app and I'm listening at http://localhost:${port}`)
 })
+
+function handleError(error){
+  console.log(error);
+}
